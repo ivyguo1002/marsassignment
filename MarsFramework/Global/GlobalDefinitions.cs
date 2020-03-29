@@ -23,10 +23,45 @@ namespace MarsFramework.Global
 
         }
 
-        public static IWebElement WaitForElement(By by, int timeOutinSeconds)
+        public static IWebElement WaitForElement(By by, int timeOutinSeconds =10)
         {
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeOutinSeconds));
-            return (wait.Until(driver=>driver.FindElement(by)));
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeOutinSeconds));
+                return (wait.Until(driver => driver.FindElement(by)));
+
+            }
+            catch (Exception e)
+            {
+                
+                throw;
+                
+            }
+            
+        }
+
+        public static IWebElement WaitForElementEnabled(By by, int timeOutInSeconds = 10)
+        {
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeOutInSeconds));
+                return wait.Until(Driver =>
+                {
+                    if (Driver.FindElement(by).Enabled)
+                        return Driver.FindElement(by);
+                    else
+                        return null;
+                }
+                    );
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
         }
         #endregion
 

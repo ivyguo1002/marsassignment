@@ -11,10 +11,12 @@ namespace MarsFramework.Pages
     {
         #region Initialize Webelements
         //Click on ShareSkill Button
-        IWebElement ShareSkillButton => Driver.FindElement(By.LinkText("Share Skill"));
+        //IWebElement ShareSkillButton => Driver.FindElement(By.LinkText("Share Skill"));
+        IWebElement ShareSkillButton => WaitForElementEnabled(By.LinkText("Share Skill"),20);
 
         //Enter the Title in textbox
-        IWebElement Title => Driver.FindElement(By.Name("title"));
+        //IWebElement Title => Driver.FindElement(By.Name("title"));
+        IWebElement Title => WaitForElementEnabled(By.Name("title"));
 
         //Enter the Description in textbox
         IWebElement Description => Driver.FindElement(By.Name("description"));
@@ -135,11 +137,11 @@ namespace MarsFramework.Pages
             }
 
             //Upload Work Sample
-            PlusIcon.Click();
-            AutoItX.WinWaitActive("Open");
-            AutoItX.ControlFocus("Open", "", "Edit1");
-            AutoItX.ControlSetText("Open", "", "Edit1", WorkSamplePath);
-            AutoItX.ControlClick("Open", "", "Button1");
+            //PlusIcon.Click();
+            //AutoItX.WinWaitActive("Open");
+            //AutoItX.ControlFocus("Open", "", "Edit1");
+            //AutoItX.ControlSetText("Open", "", "Edit1", WorkSamplePath);
+            //AutoItX.ControlClick("Open", "", "Button1");
             
             //Select Active Option
             ActiveOptions.FindElement(By.XPath($"//label[text()='{active}']//preceding-sibling::input")).Click();
