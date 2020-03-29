@@ -67,7 +67,7 @@ namespace MarsFramework.Global
             }
 
             //Set Implicit Wait
-            Wait(20);
+           // Wait(20);
         }
 
 

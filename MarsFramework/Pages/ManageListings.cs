@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using static MarsFramework.Global.GlobalDefinitions;
 
 namespace MarsFramework.Pages
@@ -46,7 +47,9 @@ namespace MarsFramework.Pages
         }
         internal int SearchService(string title)
         {
-            IList<IWebElement> rows = Table.FindElements(By.TagName("tr"));
+           // IList<IWebElement> rows = Table.FindElements(By.TagName("tr"));
+            ReadOnlyCollection<IWebElement>rows = Table.FindElements(By.TagName("tr"));
+
             IList<IWebElement> rowTDs;
             try
             {
